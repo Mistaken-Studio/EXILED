@@ -28,11 +28,13 @@ namespace Exiled.Events.EventArgs
         /// </summary>
         /// <param name="players"><inheritdoc cref="Players"/></param>
         /// <param name="nextKnownTeam"><inheritdoc cref="NextKnownTeam"/></param>
+        /// <param name="shuffleList"><inheritdoc cref="ShuffleList"/></param>
         /// <param name="isAllowed"><inheritdoc cref="IsAllowed"/></param>
-        public RespawningTeamEventArgs(List<Player> players, SpawnableTeamType nextKnownTeam, bool isAllowed = true)
+        public RespawningTeamEventArgs(List<Player> players, SpawnableTeamType nextKnownTeam, bool shuffleList = true, bool isAllowed = true)
         {
             Players = players;
             NextKnownTeam = nextKnownTeam;
+            ShuffleList = shuffleList;
             IsAllowed = isAllowed;
         }
 
@@ -63,6 +65,11 @@ namespace Exiled.Events.EventArgs
         /// Gets or sets a value indicating whether or not the spawn can occur.
         /// </summary>
         public bool IsAllowed { get; set; }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether or not list of players should be shuffled.
+        /// </summary>
+        public bool ShuffleList { get; set; }
 
         /// <summary>
         /// Gets the current spawnable team.

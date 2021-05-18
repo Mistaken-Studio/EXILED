@@ -25,12 +25,7 @@ namespace Exiled.Events.Patches.Events.Map
     {
         private static bool Prefix(ref string regular)
         {
-            int scpsLeft = Exiled.API.Features.Player.List.Where(
-                (Exiled.API.Features.Player player) =>
-                    player.IsScp &&
-                    player.Role != RoleType.Scp0492 &&
-                    (!player.SessionVariables.TryGetValue("IsNPC", out object isNPC) || !(bool)isNPC))
-                .Count();
+            int scpsLeft = API.Features.Player.List.Where(player => player.Team == Team.SCP && player.Role != RoleType.Scp0492).Count();
             string[] unitInformations = regular.Split('-');
 
             var ev = new AnnouncingNtfEntranceEventArgs(scpsLeft, unitInformations[0], int.Parse(unitInformations[1]));

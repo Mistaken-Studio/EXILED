@@ -33,6 +33,12 @@ namespace Exiled.Events.Patches.Events.Player
         {
             try
             {
+                if (!(__instance?.Hub?.characterClassManager?.IsVerified ?? false))
+                {
+                    Log.Debug($"RecievingEffect: Denied {__instance?.Hub?.nicknameSync?.MyNick ?? "NULL"}");
+                    return false;
+                }
+
                 if (__instance.Intensity == newState)
                     return false;
 

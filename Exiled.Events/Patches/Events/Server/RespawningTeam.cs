@@ -68,8 +68,7 @@ namespace Exiled.Events.Patches.Events.Server
                         while (list.Count > ev.MaximumRespawnAmount)
                             list.RemoveAt(list.Count - 1);
 
-                        if (ev.ShuffleList)
-                            list.ShuffleList();
+                        list.ShuffleList();
 
                         List<ReferenceHub> referenceHubList = ListPool<ReferenceHub>.Shared.Rent();
 

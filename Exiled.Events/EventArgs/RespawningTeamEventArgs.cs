@@ -28,13 +28,20 @@ namespace Exiled.Events.EventArgs
         /// </summary>
         /// <param name="players"><inheritdoc cref="Players"/></param>
         /// <param name="nextKnownTeam"><inheritdoc cref="NextKnownTeam"/></param>
+        /// <param name="shuffleList"><inheritdoc cref="ShuffleList"/></param>
         /// <param name="isAllowed"><inheritdoc cref="IsAllowed"/></param>
-        public RespawningTeamEventArgs(List<Player> players, SpawnableTeamType nextKnownTeam, bool isAllowed = true)
+        public RespawningTeamEventArgs(List<Player> players, SpawnableTeamType nextKnownTeam, bool shuffleList = true, bool isAllowed = true)
         {
             Players = players;
             NextKnownTeam = nextKnownTeam;
             IsAllowed = isAllowed;
+            ShuffleList = shuffleList;
         }
+
+        /// <summary>
+        /// Gets or sets a value indicating whether if <see langword="true"/> then respawn queue will be randomized.
+        /// </summary>
+        public bool ShuffleList { get; set; }
 
         /// <summary>
         /// Gets the list of players that are going to be respawned.
